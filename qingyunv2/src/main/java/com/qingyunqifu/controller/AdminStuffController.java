@@ -43,13 +43,13 @@ public class AdminStuffController {
             System.out.println(stuff.toString());
             model.addAttribute("stuff", stuff);
             System.out.println("---22222222");
-            return "modifystuff";
+            return "stuff/modifystuff";
 
         }else {
             List<LittleTypes> littleTypes = qingYunService.findAllLittleType();
             model.addAttribute("littleTypes", littleTypes);
             System.out.println("1111111");
-            return "addstuff";
+            return "stuff/addstuff";
         }
 
     }

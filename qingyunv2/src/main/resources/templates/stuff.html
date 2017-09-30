@@ -18,7 +18,7 @@
 <form id="searchForm" class="layui-form">
     <input type="hidden" name="page" value="0"/>
     <div class="layui-inline">
-        <input type="button" class="layui-btn" id="addbtn" value="新增"/>
+        <input type="button" class="layui-btn" id="addBtn" value="新增"/>
     </div>
     <div class="layui-inline">
         <input type="button" class="layui-btn layui-btn-danger" id="btnDelete" value="删除"/>
@@ -64,29 +64,26 @@
             </td>
 
             <td style="padding:0 15px;">
-
                 <button class="layui-btn layui-btn-small smt-update" th:attr="data-id=${item.id}">修改</button>
                 <button class="layui-btn layui-btn-small layui-btn-danger" th:attr="data-id=${item.id}">删除</button>
             </td>
         </tr>
         </tbody>
     </table>
-    <div id="paged"></div>
 </div>
 <script th:src="@{/layui/layui.js}"></script>
 <script type="text/javascript" th:inline="javascript">
-    //一般直接写在一个js文件中
     layui.config({
         base:'/selfjs/'
     });
-    layui.use(['form','element','layer','tablechecked'], function(){
+    layui.use(['form','layer','tablechecked','element'], function(){
         var $ = layui.jquery,
             tools = layui.tablechecked,
             layer = layui.layer;
 
-        //顶部新增事件监听
-        console.log("准备新增");
+
         $('#addBtn').on('click',function(){
+            console.log("准备新增");
             top.layer.open({
                 type:2,
                 area:['450px','380px'],
@@ -95,10 +92,10 @@
                 content:'/sys_stuff/edit'
             });
         });
-        //更新事件
-        console.log("准备更新");
+
 
         $('.smt-update').on('click',function(){
+            console.log("准备更新");
             top.layer.open({
                 type:2,
                 area:['450px','400px'],
@@ -107,10 +104,9 @@
                 content:'/sys_stuff/edit?id='+$(this).data('id')
             });
         });
-        //删除事件
-        console.log("准备删除");
 
         $('#btnDelete').on('click', function(){
+            console.log("准备删除");
             var ids = tools.getTableCheckedRowIds("myTable");
             if(!ids) return layer.msg('请先选择需要删除的记录。', {time:1500, icon:0});
             layer.confirm('确定删除?', {icon: 3, title:'提示'}, function(index){

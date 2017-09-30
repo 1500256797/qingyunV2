@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!--灰色  我用灰色-->
 <head>
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
@@ -24,7 +23,7 @@
                 <li class="layui-nav-item"><a href="javascript:;" id="pay"><i class="fa fa-gratipay" aria-hidden="true"></i> 等待添加</a></li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                        <img src="http://m.zhengjinfan.cn/images/0.jpg" class="layui-nav-img"> </img>Van
+                        <img th:src="@{/images/haizei.jpg}" class="layui-nav-img"> </img>JJJJJJJ
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">基本资料</a></dd>
@@ -110,7 +109,7 @@
     <script>
         var message;
         layui.config({
-            base: '/js/'
+            base: '/selfjs/js/'
         }).use(['app', 'message'], function() {
             var app = layui.app,
                 $ = layui.jquery,
@@ -127,7 +126,7 @@
                 layer.open({
                     title: false,
                     type: 1,
-                    content: '<img src="/build/images/pay.png" />',
+                    content: '暂未添加',
                     area: ['500px', '250px'],
                     shadeClose: true
                 });
