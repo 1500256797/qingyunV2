@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
 </head>
 <body style="margin:30px;">
-<form class="layui-form" method="post" th:action="@{/sys_mtype/modify}" >
+<form class="layui-form"  >
     <input type="hidden" name="id" th:value="${maintype.id}"/>
     <div class="layui-form-item">
         <label class="layui-form-label">商品名：</label>
@@ -33,5 +33,45 @@
         <input type="reset" class="layui-btn layui-btn-primary" value="重置"/>
     </div>
 </form>
+<script th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+    layui.use(['form','layer'], function () {
+        var $ = layui.jquery,
+            form = layui.form;
+
+        form.on('submit(btnSave)', function(data) {
+            $.ajax({
+                type: 'POST',
+                url: /*[[@{/sys_mtype/modify}]]*/'',
+                dataType:'json',
+                data: data.field,
+                async: true,
+                success: function (result) {
+                    console.log(result.code)
+                    if (result.code == 0) {
+                        layer.msg('保存成功', {icon: 1, time:1000});
+                        setTimeout(function(){
+                            top.layer.closeAll('iframe');
+                            //刷新父亲的页面
+                            console.log("关闭之后刷新界面");
+
+                            parent.refreshIframe();
+                        },800);
+                    } else {
+                        consol.alert(result.code);
+                        layer.msg('保存失败！'+result.msg, {icon: 2, time:1000});
+                    }
+                },
+                error: function (result, type) {
+                    layer.msg('保存失败！', { icon: 2, time:1000 });
+                }
+            });
+            console.log(data.field)
+            return false;
+        });
+
+    });
+
+</script>
 </body>
 </html>

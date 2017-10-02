@@ -107,7 +107,7 @@
                         if (result.code == 0) {
                             layer.msg('删除成功', {icon: 1,time: 1000});
                             setTimeout(function(){
-                                parent.refreshIframe();
+                                self.location = /*[[@{/sys_run/find}]]*/'';
                             },800);
 
                         }

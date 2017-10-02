@@ -1,45 +1,27 @@
-//package com.qingyunqifu.interceptor;
-//
-//import org.springframework.beans.BeansException;
-//import org.springframework.context.ApplicationContext;
-//import org.springframework.context.ApplicationContextAware;
-//import org.springframework.context.annotation.ComponentScan;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.util.ResourceUtils;
-//import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-//import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-//import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-//import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-//
-//@Configuration
-//@EnableWebMvc
-//@ComponentScan
-////将AuthorizationInterceptor注册为bean类
-//public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
-//
-//    private ApplicationContext applicationContext;
-//
-//    public WebConfig(){
-//        super();
-//    }
-//
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-////        registry.addResourceHandler("/static/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/static/");
-////        registry.addResourceHandler("/templates/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/templates/");
-//
-//        super.addResourceHandlers(registry);
-//    }
-//
-//    @Override
-//    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-//        this.applicationContext = applicationContext;
-//    }
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        //拦截规则：除了login，其他都拦截判断
-//        registry.addInterceptor(new AuthorityIntercptor()).excludePathPatterns("/login");
-//        super.addInterceptors(registry);
-//    }
-//
-//}
+package com.qingyunqifu.interceptor;
+
+import org.apache.catalina.filters.RemoteIpFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+@Configuration
+public class WebConfig extends WebMvcConfigurerAdapter {
+    @Bean
+    public RemoteIpFilter remoteIpFilter() {
+        return new RemoteIpFilter();
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        return new LocaleChangeInterceptor();
+    }
+
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new AuthorityIntercptor()).addPathPatterns("/**");
+        super.addInterceptors(registry);
+
+    }
+}
