@@ -1,11 +1,4 @@
-/** kit_admin-v1.0.4 MIT License By http://kit/zhengjinfan.cn */
- ;/**
- * Name:app.js
- * Author:Van
- * E-mail:zheng_jinfan@126.com
- * Website:http://kit.zhengjinfan.cn/
- * LICENSE:MIT
- */
+
 var tab;
 layui.define(['nprogress', 'form', 'table', 'loader', 'tab', 'navbar'],
     function(exports) {
@@ -29,7 +22,6 @@ layui.define(['nprogress', 'form', 'table', 'loader', 'tab', 'navbar'],
             var that = this,
                 _config = that.config;
             if (_config.type === 'iframe') {
-                //tab.set().render()起什么作用?
                 tab.set({
                     elem: '#container',
                     onSwitch: function(data) { //选项卡切换时触发

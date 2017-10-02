@@ -25,6 +25,11 @@ public class AdminIndexController {
     @Qualifier("QingYunService")
     private QingYunService qingYunService;
 
+    //左侧固定页面
+    @RequestMapping(value = "/controller")
+    public String controller() {
+        return "controller";
+    }
 
 
     //后台管理首页

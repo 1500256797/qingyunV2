@@ -68,8 +68,76 @@
         </tbody>
     </table>
 </div>
-
 <script th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+    layui.config({
+        base:'/selfjs/'
+    });
+    layui.use(['form','layer','tablechecked','element'], function(){
+        var $ = layui.jquery,
+            tools = layui.tablechecked,
+            layer = layui.layer;
+
+
+        $('#addBtn').on('click',function(){
+            console.log("准备新增");
+            top.layer.open({
+                type:2,
+                area:['450px','380px'],
+                resize:false,
+                title:'商品添加',
+                content:'/sys_seller/edit'
+            });
+        });
+
+
+        $('.smt-update').on('click',function(){
+            console.log("准备更新");
+            top.layer.open({
+                type:2,
+                area:['450px','400px'],
+                resize:false,
+                title:'用户编辑',
+                content:'/sys_seller/edit?id='+$(this).data('id')
+            });
+        });
+
+        $('#btnDelete').on('click', function(){
+            console.log("准备删除");
+            var ids = tools.getTableCheckedRowIds("myTable");
+            if(!ids) return layer.msg('请先选择需要删除的记录。', {time:1500, icon:0});
+            layer.confirm('确定删除?', {icon: 3, title:'提示'}, function(index){
+                $.ajax({
+                    type: 'POST',
+
+                    url: /*[[@{/sys_stuff/delete}]]*/'',
+                    data: {ids: ids },
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.code == 0) {
+                            layer.msg('删除成功', {icon: 1,time: 1000});
+                            setTimeout(function(){
+                                self.location = /*[[@{/sys_stuff/find}]]*/'';
+
+                            },800);
+
+                        }
+                        else {
+                            layer.msg('删除失败！'+result.msg, {time:1000,icon: 2});
+                        }
+                    },
+                    error: function(result, type) {
+                        layer.msg('删除失败！', { time:1000,icon: 2 });
+                    }
+                });
+
+            });
+        });
+
+
+
+    });
+</script>
 </body>
 </html>
 

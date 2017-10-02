@@ -31,7 +31,7 @@ public class AdminSellerController {
         }
         Sellers seller = qingYunService.findSellerById(id);
         model.addAttribute("seller", seller);
-        return "addsellers";
+        return "seller/addsellers";
     }
 
     //获取所有商家数据

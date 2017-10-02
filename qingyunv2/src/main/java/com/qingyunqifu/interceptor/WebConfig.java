@@ -19,6 +19,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return new LocaleChangeInterceptor();
     }
 
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthorityIntercptor()).addPathPatterns("/**");
         super.addInterceptors(registry);
