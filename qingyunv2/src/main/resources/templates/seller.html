@@ -138,6 +138,40 @@
 
     });
 </script>
+<script>
+    var websocket = null;
+
+    if('WebSocket' in window) {
+        websocket = new WebSocket("ws://localhost:8899/index/webSocket");
+    }else{
+        alert("浏览器不支持websocket");
+    }
+
+
+    //建立连接
+    websocket.onopen = function (event) {
+        alert("建立连接");
+    };
+
+    websocket.onclose = function (event) {
+        alert("建立连接")
+    };
+
+    websocket.onmessage = function (event) {
+        alert("收到消息" + event.data);
+        //弹窗提醒，播放音乐
+    };
+
+
+    websocket.onerror = function (event) {
+        alert("websocker发生错误" + event.toString());
+
+    };
+
+    window.onbeforeunload = function () {
+        websocket.close();
+    };
+</script>
 </body>
 </html>
 
