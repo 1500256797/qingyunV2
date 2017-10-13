@@ -36,7 +36,7 @@
                 <th lay-data="{field:'remark', width:120}" rowspan="2">商家描述</th>
                 <th lay-data="{field:'sellarrange', width:120}" rowspan="2">主营范围</th>
                 <th lay-data="{field:'address', , width:120}" rowspan="2">地址</th>
-                <th lay-data="{field:'address', , width:120}" rowspan="2">修改</th>
+                <th lay-data="{field:'modify', , width:120}" rowspan="2">修改</th>
             </tr>
         </thead>
         <tbody>
@@ -81,25 +81,27 @@
 
         $('#addBtn').on('click',function(){
             console.log("准备新增");
-            top.layer.open({
-                type:2,
-                area:['450px','380px'],
-                resize:false,
-                title:'商品添加',
-                content:'/sys_seller/edit'
-            });
+//            top.layer.open({
+//                type:2,
+//                area:['450px','380px'],
+//                resize:false,
+//                title:'商品添加',
+//                content:'/sys_seller/edit'
+//            });
+            self.location = /*[[@{/sys_seller/edit}]]*/'';
+
         });
 
 
         $('.smt-update').on('click',function(){
             console.log("准备更新");
-            top.layer.open({
-                type:2,
-                area:['450px','400px'],
-                resize:false,
-                title:'用户编辑',
-                content:'/sys_seller/edit?id='+$(this).data('id')
-            });
+//            top.layer.open({
+//                type:2,
+//                area:['450px','400px'],
+//                resize:false,
+//                title:'用户编辑',
+//                content:'/sys_seller/edit?id='+$(this).data('id')
+//            });
         });
 
         $('#btnDelete').on('click', function(){

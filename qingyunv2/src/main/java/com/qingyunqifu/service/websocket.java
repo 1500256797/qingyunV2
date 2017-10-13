@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 @Component
-@ServerEndpoint("/webSocket")
+@ServerEndpoint("/webSocket1")
 public class websocket {
 
     private Session session;
@@ -24,7 +24,10 @@ public class websocket {
         webSockets.add(this);
         System.out.println("有新的连接，总数是："+ webSockets.size());
 
+
+
     }
+
 
     @OnClose
     public void onClose() {

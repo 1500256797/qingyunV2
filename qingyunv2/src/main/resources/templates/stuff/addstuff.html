@@ -52,7 +52,6 @@
     layui.use(['form','layer'], function () {
         var $ = layui.jquery,
             form = layui.form;
-        //监听提交  data是什么
         form.on('submit(btnAdd)', function(data) {
             $.ajax({
                 type: 'POST',

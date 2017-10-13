@@ -1,14 +1,14 @@
-package com.qingyunqifu.config;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;
-
-@Component
-public class WebSocketConfigure {
-
-    @Bean
-    public ServerEndpointExporter serverEndpointExporter(){
-        return new ServerEndpointExporter();
-    };
-}
+//package com.qingyunqifu.config;
+//
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.stereotype.Component;
+//import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+//
+//@Component
+//public class WebSocketConfigure {
+//
+//    @Bean
+//    public ServerEndpointExporter serverEndpointExporter(){
+//        return new ServerEndpointExporter();
+//    };
+//}

@@ -174,7 +174,6 @@ public class QingYunServiceImpl implements QingYunService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public void saveSeller(Sellers seller) {
         sellerDao.save(seller);
     }
