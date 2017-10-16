@@ -16,13 +16,12 @@
     <legend>添加商户信息</legend>
 </fieldset>
 
-
-<!--<form class="layui-form layui-form-pane" th:action="@{/sys_seller/add/}" method="post">-->
 <form class="layui-form layui-form-pane" >
     <div class="layui-form-item">
         <label class="layui-form-label">公司名称</label>
         <div class="layui-input-block">
-            <input name="name" autocomplete="off" placeholder="请输入标题" class="layui-input" type="text"></input>
+            <input type="hidden" name="sid" th:value="${seller.id}"></input>
+            <input name="name" autocomplete="off" th:value="${seller.name}" class="layui-input" type="text"></input>
         </div>
     </div>
 
@@ -30,7 +29,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">经理</label>
         <div class="layui-input-inline">
-            <input name="managername" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text"></input>
+            <input name="managername" lay-verify="required" th:value="${seller.managerName}" autocomplete="off" class="layui-input" type="text"></input>
         </div>
 
 
@@ -40,14 +39,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">手机</label>
         <div class="layui-input-inline">
-            <input name="phone" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text"></input>
+            <input name="phone" lay-verify="required" th:value="${seller.phone}" autocomplete="off" class="layui-input" type="text"></input>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">电话</label>
         <div class="layui-input-inline">
-            <input name="tel" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" type="text"></input>
+            <input name="tel" lay-verify="required" th:value="${seller.tel}" autocomplete="off" class="layui-input" type="text"></input>
         </div>
     </div>
 

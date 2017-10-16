@@ -18,8 +18,8 @@ public class AuthorityIntercptor implements HandlerInterceptor{
     * */
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.println("在请求处理来之前，也就是在controller函数调用之前");
-        System.out.println("普通拦截器正在保护您的安全");
+//        System.out.println("在请求处理来之前，也就是在controller函数调用之前");
+//        System.out.println("普通拦截器正在保护您的安全");
         //flag 登录标志
         boolean flag = false;
 
@@ -39,12 +39,12 @@ public class AuthorityIntercptor implements HandlerInterceptor{
             Users user = (Users) httpServletRequest.getSession().getAttribute("user");
 
             if (user == null) {
-                System.out.println("你好坏，快去登录");
-                httpServletRequest.setAttribute("message", "请先登录再来");
+//                System.out.println("你好坏，快去登录");
+//                httpServletRequest.setAttribute("message", "请先登录再来");
                 httpServletRequest.getRequestDispatcher("login").forward(httpServletRequest, httpServletResponse);
 
             }else {
-                System.out.println("放行！！！");
+//                System.out.println("放行！！！");
                 flag = true;
             }
 
@@ -55,12 +55,12 @@ public class AuthorityIntercptor implements HandlerInterceptor{
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        System.out.println("在请求处理后，但在试图渲染之前调用");
+//        System.out.println("在请求处理后，但在试图渲染之前调用");
     }
 
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        System.out.println("渲染结束后再调用");
+//        System.out.println("渲染结束后再调用");
     }
 }

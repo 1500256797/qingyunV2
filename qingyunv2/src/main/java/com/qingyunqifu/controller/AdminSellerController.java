@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,14 +25,13 @@ public class AdminSellerController {
 
     //新增或修改商户
     @RequestMapping(value = "/sys_seller/edit")
-    public String editSeller(Integer id, Model model) {
+    public String editSeller(String id, Model model) {
         if (id == null) {
-            System.out.println("id为空，所以这是新增事件");
             return "seller/addsellers";
         }else {
-            Sellers seller = qingYunService.findSellerById(id);
+            Sellers seller = qingYunService.findSellerById(Integer.parseInt(id));
             model.addAttribute("seller", seller);
-            return "seller/addsellers";
+            return "seller/modifysellers";
         }
 
     }
@@ -50,9 +47,6 @@ public class AdminSellerController {
                       @ModelAttribute("sellarrange") String sellarrange,
                       @ModelAttribute("address") String address
                       ) {
-
-
-        System.out.println("正在调用添加商户方法");
         Sellers seller = new Sellers();
         seller.setName(name);
         seller.setManagerName(managername);
@@ -62,9 +56,38 @@ public class AdminSellerController {
         seller.setSellArrange(sellarrange);
         seller.setAddress(address);
         qingYunService.saveSeller(seller);
-
         return Result.success();
 
+
+    }
+
+
+    @RequestMapping(value = "/sys_seller/modify")
+    @ResponseBody
+    public Result update(@ModelAttribute("name") String name,
+                         @ModelAttribute("managername") String managername,
+                         @ModelAttribute("phone") String phone,
+                         @ModelAttribute("tel") String tel,
+                         @ModelAttribute("remark") String remark,
+                         @ModelAttribute("sellarrange") String sellarrange,
+                         @ModelAttribute("address") String address,
+                         @ModelAttribute("sid") String id
+    ) {
+        if (id != null && !id.equals(" ")) {
+            Sellers seller = qingYunService.findSellerById(Integer.parseInt(id));
+            seller.setName(name);
+            seller.setManagerName(managername);
+            seller.setPhone(phone);
+            seller.setTel(tel);
+            seller.setRemark(remark);
+            seller.setSellArrange(sellarrange);
+            seller.setAddress(address);
+            qingYunService.modifySeller(seller);
+            return Result.success();
+        } else {
+
+            return Result.failure("id为空,非法操作");
+        }
 
     }
 
@@ -84,7 +107,6 @@ public class AdminSellerController {
     @ResponseBody
     public Result delete(String ids) {
         try {
-
             qingYunService.deleteSellerById(Integer.parseInt(ids));
         } catch(ExceptionMsg e) {
             return Result.failure(e.getMessage());
@@ -93,5 +115,8 @@ public class AdminSellerController {
             return Result.failure(e.getMessage());
         }
         return Result.success();
+
+
     }
+
 }

@@ -56,7 +56,7 @@ public interface SellerDao {
 
 
     //根据id删除
-    @Delete("delete from   main_types   where id =#{id}")
+    @Delete("delete from   sellers   where id =#{id} ")
     void deleteById(Integer id);
 
     //根据商品id查询商家

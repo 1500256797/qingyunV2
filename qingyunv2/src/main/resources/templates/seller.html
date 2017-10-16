@@ -81,27 +81,20 @@
 
         $('#addBtn').on('click',function(){
             console.log("准备新增");
-//            top.layer.open({
-//                type:2,
-//                area:['450px','380px'],
-//                resize:false,
-//                title:'商品添加',
-//                content:'/sys_seller/edit'
-//            });
             self.location = /*[[@{/sys_seller/edit}]]*/'';
 
         });
 
-
         $('.smt-update').on('click',function(){
-            console.log("准备更新");
-//            top.layer.open({
-//                type:2,
-//                area:['450px','400px'],
-//                resize:false,
-//                title:'用户编辑',
-//                content:'/sys_seller/edit?id='+$(this).data('id')
-//            });
+            window.alert("准备更新"+'/sys_seller/edit/'+$(this).data('id'))
+            top.layer.open({
+                type:2,
+                area:['450px','400px'],
+                resize:false,
+                title:'用户编辑',
+                content:'/sys_seller/edit?id='+$(this).data('id')
+            });
+
         });
 
         $('#btnDelete').on('click', function(){
@@ -112,14 +105,14 @@
                 $.ajax({
                     type: 'POST',
 
-                    url: /*[[@{/sys_stuff/delete}]]*/'',
+                    url: /*[[@{/sys_seller/delete}]]*/'',
                     data: {ids: ids },
                     dataType: 'json',
                     success: function (result) {
                         if (result.code == 0) {
                             layer.msg('删除成功', {icon: 1,time: 1000});
                             setTimeout(function(){
-                                self.location = /*[[@{/sys_stuff/find}]]*/'';
+                                self.location = /*[[@{/sys_seller/find}]]*/'';
 
                             },800);
 
@@ -139,40 +132,6 @@
 
 
     });
-</script>
-<script>
-    var websocket = null;
-
-    if('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:8899/index/webSocket");
-    }else{
-        alert("浏览器不支持websocket");
-    }
-
-
-    //建立连接
-    websocket.onopen = function (event) {
-        alert("建立连接");
-    };
-
-    websocket.onclose = function (event) {
-        alert("建立连接")
-    };
-
-    websocket.onmessage = function (event) {
-        alert("收到消息" + event.data);
-        //弹窗提醒，播放音乐
-    };
-
-
-    websocket.onerror = function (event) {
-        alert("websocker发生错误" + event.toString());
-
-    };
-
-    window.onbeforeunload = function () {
-        websocket.close();
-    };
 </script>
 </body>
 </html>

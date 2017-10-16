@@ -70,6 +70,7 @@ public class SellerDaoTest {
 
     @Test
     public void deleteById() throws Exception {
+        sellerDao.deleteById(6);
     }
 
 }
