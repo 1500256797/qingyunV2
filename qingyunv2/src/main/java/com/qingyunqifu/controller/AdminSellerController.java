@@ -115,8 +115,6 @@ public class AdminSellerController {
             return Result.failure(e.getMessage());
         }
         return Result.success();
-
-
     }
 
 }
