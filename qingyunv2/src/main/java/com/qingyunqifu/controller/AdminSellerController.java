@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -26,6 +31,7 @@ public class AdminSellerController {
     //新增或修改商户
     @RequestMapping(value = "/sys_seller/edit")
     public String editSeller(String id, Model model) {
+
         if (id == null) {
             return "seller/addsellers";
         }else {
@@ -37,16 +43,20 @@ public class AdminSellerController {
     }
 
 
-    @RequestMapping("/sys_seller/add")
+    @RequestMapping(value = "/sys_seller/add")
     @ResponseBody
-    public Result add(@ModelAttribute("name") String name ,
-                      @ModelAttribute("managername") String managername,
-                      @ModelAttribute("phone") String phone,
-                      @ModelAttribute("tel") String tel,
-                      @ModelAttribute("remark") String remark,
-                      @ModelAttribute("sellarrange") String sellarrange,
-                      @ModelAttribute("address") String address
-                      ) {
+    public Result add(@RequestParam("name") String name ,
+                      @RequestParam("managername") String managername,
+                      @RequestParam("phone") String phone,
+                      @RequestParam("tel") String tel,
+                      @RequestParam("remark") String remark,
+                      @RequestParam("sellarrange") String sellarrange,
+                      @RequestParam("province") String province,
+                      @RequestParam("city") String city,
+                      @RequestParam("address") String address,
+                      @RequestParam("img") String img
+                      ) throws IOException
+    {
         Sellers seller = new Sellers();
         seller.setName(name);
         seller.setManagerName(managername);
@@ -54,11 +64,13 @@ public class AdminSellerController {
         seller.setTel(tel);
         seller.setRemark(remark);
         seller.setSellArrange(sellarrange);
+        seller.setProvince(province);
+        seller.setCity(city);
         seller.setAddress(address);
+        seller.setImgurl(img);
+        System.out.println(seller.toString());
         qingYunService.saveSeller(seller);
         return Result.success();
-
-
     }
 
 
@@ -85,7 +97,6 @@ public class AdminSellerController {
             qingYunService.modifySeller(seller);
             return Result.success();
         } else {
-
             return Result.failure("id为空,非法操作");
         }
 

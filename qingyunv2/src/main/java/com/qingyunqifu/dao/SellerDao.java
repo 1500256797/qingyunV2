@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by qqqqqqq on 17-9-9.
@@ -22,12 +23,16 @@ public interface SellerDao {
             @Result(column = "manager_name", property = "managerName"),
             @Result(column = "tel", property = "tel"),
             @Result(column = "phone", property = "phone"),
-            @Result(column = "qq_num", property = "qqNum"),
+            @Result(column = "province", property = "province"),
+            @Result(column = "city", property = "city"),
             @Result(column = "address", property = "address"),
             @Result(column = "remark", property = "remark"),
-            @Result(column = "sell_arrange", property = "sellArrange")
+            @Result(column = "sell_arrange", property = "sellArrange"),
+            @Result(column = "img_url",property = "imgurl"),
+            @Result(column = "vip", property = "vip")
     })
     List<Sellers> findAllSellers();
+
 
 
 
@@ -38,20 +43,40 @@ public interface SellerDao {
             @Result(column = "manager_name", property = "managerName"),
             @Result(column = "tel", property = "tel"),
             @Result(column = "phone", property = "phone"),
-            @Result(column = "qq_num", property = "qqNum"),
+            @Result(column = "province", property = "province"),
+            @Result(column = "city", property = "city"),
             @Result(column = "address", property = "address"),
             @Result(column = "remark", property = "remark"),
-            @Result(column = "sell_arrange", property = "sellArrange")
+            @Result(column = "sell_arrange", property = "sellArrange"),
+            @Result(column = "img_url",property = "imgurl"),
+            @Result(column = "vip", property = "vip")
     })
     Sellers findSellerById(Integer id);
 
+
+    @SelectProvider(type = SellerBynalSqlProvider.class, method = "selectSellersWithParam")
+    @Results({
+            @Result(id = true, column = "id", property = "id"),
+            @Result(column = "name", property = "name"),
+            @Result(column = "manager_name", property = "managerName"),
+            @Result(column = "tel", property = "tel"),
+            @Result(column = "phone", property = "phone"),
+            @Result(column = "province", property = "province"),
+            @Result(column = "city", property = "city"),
+            @Result(column = "address", property = "address"),
+            @Result(column = "remark", property = "remark"),
+            @Result(column = "sell_arrange", property = "sellArrange"),
+            @Result(column = "img_url",property = "imgurl"),
+            @Result(column = "vip", property = "vip")
+    })
+    List<Sellers> selectSellersWithParam(Map<String, Object> Param);
     //动态插入
-    @SelectProvider(type = SellerBynalSqlProvider.class,method = "insertSeller")
+    @InsertProvider(type = SellerBynalSqlProvider.class,method = "insertSeller")
     void save(Sellers seller);
 
 
     //动态更新
-    @SelectProvider(type = SellerBynalSqlProvider.class, method = "updateSeller")
+    @UpdateProvider(type = SellerBynalSqlProvider.class, method = "updateSeller")
     void update(Sellers seller);
 
 
@@ -67,10 +92,13 @@ public interface SellerDao {
             @Result(column = "manager_name", property = "managerName"),
             @Result(column = "tel", property = "tel"),
             @Result(column = "phone", property = "phone"),
-            @Result(column = "qq_num", property = "qqNum"),
+            @Result(column = "province", property = "province"),
+            @Result(column = "city", property = "city"),
             @Result(column = "address", property = "address"),
             @Result(column = "remark", property = "remark"),
-            @Result(column = "sell_arrange", property = "sellArrange")
+            @Result(column = "sell_arrange", property = "sellArrange"),
+            @Result(column = "img_url",property = "imgurl"),
+            @Result(column = "vip", property = "vip")
     })
     List<Sellers> findAllSellersByStuffById(Integer stuff_id);
 
@@ -83,10 +111,13 @@ public interface SellerDao {
             @Result(column = "manager_name", property = "managerName"),
             @Result(column = "tel", property = "tel"),
             @Result(column = "phone", property = "phone"),
-            @Result(column = "qq_num", property = "qqNum"),
+            @Result(column = "province", property = "province"),
+            @Result(column = "city", property = "city"),
             @Result(column = "address", property = "address"),
             @Result(column = "remark", property = "remark"),
             @Result(column = "sell_arrange", property = "sellArrange"),
+            @Result(column = "img_url",property = "imgurl"),
+            @Result(column = "vip", property = "vip"),
             @Result(column = "id",property = "stuffsList",many = @Many(select = "com.qingyunqifu.dao.StuffDao.findAllStuffsBySellerId" ,fetchType = FetchType.LAZY))
     })
     Sellers findAllStuffsBySellerId(Integer id);

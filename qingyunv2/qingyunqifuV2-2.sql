@@ -8,15 +8,17 @@ create table sellers(
   tel VARCHAR (16) DEFAULT NULL ,
   phone VARCHAR (16) DEFAULT NULL ,
   qq_num VARCHAR (10) DEFAULT NULL ,
+  province VARCHAR (50) not NULL ,
+  city VARCHAR (50) not NULL ,
   address VARCHAR (50) not NULL ,
   remark varchar(500) DEFAULT NULL ,
 --   主营范围
   sell_arrange VARCHAR (500) not NULL ,
   PRIMARY KEY (id)
 )engine=innodb auto_increment=1 DEFAULT charset=utf8;
-INSERT into sellers(id, name, manager_name,tel,phone,qq_num,address,remark,sell_arrange) VALUES (1,'沈阳车酷汽配','张经理','02431123123','18392613114','1500256797','陕西-安康','暂无介绍','能修国内车，还能修国外的！');
-INSERT into sellers(id, name, manager_name,tel,phone,qq_num,address,remark,sell_arrange) VALUES  (2,'沈阳杨宁汽配','张经理','02431123123','1232613114','1500256797','湖北-安康','暂无介绍','有易损件');
-INSERT into sellers(id, name, manager_name,tel,phone,qq_num,address,remark,sell_arrange) VALUES (3,'沈阳兴业汽配','王经理','02431123123','1232613114','1500256797','湖北-安康','暂无介绍','我家卖有油品');
+INSERT into sellers(id, name, manager_name,tel,phone,qq_num,province,city,address,remark,sell_arrange) VALUES (1,'沈阳车酷汽配','张经理','02431123123','18392613114','1500256797','陕西-安康','暂无介绍','能修国内车，还能修国外的！');
+INSERT into sellers(id, name, manager_name,tel,phone,qq_num,province,city,address,remark,sell_arrange) VALUES  (2,'沈阳杨宁汽配','张经理','02431123123','1232613114','1500256797','湖北-安康','暂无介绍','有易损件');
+INSERT into sellers(id, name, manager_name,tel,phone,qq_num,province,city,address,remark,sell_arrange) VALUES (3,'沈阳兴业汽配','王经理','02431123123','1232613114','1500256797','湖北-安康','暂无介绍','我家卖有油品');
 
 
 #商家商品经营表

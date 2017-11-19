@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class QingYunServiceImplTest {
+
     @Autowired
     private StuffDao stuffDao;
 
@@ -28,6 +29,7 @@ public class QingYunServiceImplTest {
 
     @Autowired
     private MainTypeDao mainTypeDao;
+
     @Test
     public void findAllMainType() throws Exception {
     }

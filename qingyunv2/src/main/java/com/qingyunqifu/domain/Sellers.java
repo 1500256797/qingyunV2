@@ -11,22 +11,16 @@ public class Sellers {
     String managerName;
     String tel;
     String phone;
-    String qqNum;
+    String province ;
+    String city;
     String address;
     String remark;
     String sellArrange;
-
+    Integer vip;
+    String imgurl;
     //一个商家可以经营多个产品
     List<Stuffs> stuffsList;
     public Sellers() {
-    }
-
-    public List<Stuffs> getStuffsList() {
-        return stuffsList;
-    }
-
-    public void setStuffsList(List<Stuffs> stuffsList) {
-        this.stuffsList = stuffsList;
     }
 
     public Integer getId() {
@@ -69,12 +63,20 @@ public class Sellers {
         this.phone = phone;
     }
 
-    public String getQqNum() {
-        return qqNum;
+    public String getProvince() {
+        return province;
     }
 
-    public void setQqNum(String qqNum) {
-        this.qqNum = qqNum;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getAddress() {
@@ -101,6 +103,29 @@ public class Sellers {
         this.sellArrange = sellArrange;
     }
 
+    public Integer getVip() {
+        return vip;
+    }
+
+    public void setVip(Integer vip) {
+        this.vip = vip;
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
+
+    public List<Stuffs> getStuffsList() {
+        return stuffsList;
+    }
+
+    public void setStuffsList(List<Stuffs> stuffsList) {
+        this.stuffsList = stuffsList;
+    }
 
     @Override
     public String toString() {
@@ -110,10 +135,13 @@ public class Sellers {
                 ", managerName='" + managerName + '\'' +
                 ", tel='" + tel + '\'' +
                 ", phone='" + phone + '\'' +
-                ", qqNum='" + qqNum + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
                 ", address='" + address + '\'' +
                 ", remark='" + remark + '\'' +
                 ", sellArrange='" + sellArrange + '\'' +
+                ", vip=" + vip +
+                ", imgurl='" + imgurl + '\'' +
                 '}';
     }
 }

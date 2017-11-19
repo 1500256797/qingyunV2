@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by qqqqqqq on 17-9-9.
@@ -152,8 +153,9 @@ public class QingYunServiceImpl implements QingYunService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Sellers> findAllSellersByStuffId(Integer id) {
-        return stuffDao.findAllSellersByStuffById(id).getSellersList();
+    public List<Sellers> findAllSellersByStuffId(Stuffs stuff) {
+
+        return stuffDao.findAllSellersByStuffById(stuff.getId()).getSellersList();
     }
 
     @Override
@@ -186,6 +188,11 @@ public class QingYunServiceImpl implements QingYunService {
     @Override
     public void deleteSellerById(Integer id) {
         sellerDao.deleteById(id);
+    }
+
+    @Override
+    public List<Sellers> findSellersWithParam(Map<String,Object> param) {
+        return sellerDao.selectSellersWithParam(param);
     }
 
 

@@ -31,10 +31,14 @@
             <tr>
                 <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
                 <th lay-data="{field:'name', width:100}" rowspan="2">商家名称</th>
+                <th lay-data="{field:'name', width:100}" rowspan="2">商家</th>
                 <th lay-data="{field:'username', width:80}" rowspan="2">联系人</th>
+                <th lay-data="{field:'vip', , width:120}" rowspan="2">会员等级</th>
                 <th lay-data="{field:'phone', width:120}" rowspan="2">手机号码</th>
                 <th lay-data="{field:'remark', width:120}" rowspan="2">商家描述</th>
                 <th lay-data="{field:'sellarrange', width:120}" rowspan="2">主营范围</th>
+                <th lay-data="{field:'province', , width:120}" rowspan="2">省份</th>
+                <th lay-data="{field:'city', , width:120}" rowspan="2">市区</th>
                 <th lay-data="{field:'address', , width:120}" rowspan="2">地址</th>
                 <th lay-data="{field:'modify', , width:120}" rowspan="2">修改</th>
             </tr>
@@ -46,7 +50,20 @@
                     <span th:text="${item.name}"></span>
                 </td>
                 <td>
+                    <span>
+                    <img width="100px" height="100px" alt="暂无图片" th:src="${item.imgurl}"></img>
+                    </span>
+                </td>
+                <td>
                     <span th:text="${item.managerName}"></span>
+                </td>
+                <td th:switch="${item.vip}">
+                    <span th:case="1">普通</span>
+                    <span th:case="2">银牌</span>
+                    <span th:case="3">金牌</span>
+                    <span th:case="4">钻石</span>
+
+
                 </td>
                 <td>
                     <span th:text="${item.phone}"></span>
@@ -57,6 +74,12 @@
                 </td>
                 <td>
                     <span th:text="${item.sellArrange}"></span>
+                </td>
+                <td>
+                    <span th:text="${item.province}"></span>
+                </td>
+                <td>
+                    <span th:text="${item.city}"></span>
                 </td>
                 <td>
                     <span th:text="${item.address}"></span>

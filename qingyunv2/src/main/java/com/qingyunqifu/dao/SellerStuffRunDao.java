@@ -27,13 +27,13 @@ public interface SellerStuffRunDao {
     SellerStuffRun findSellerStuffRunById(Integer id);
 
     //动态插入
-    @SelectProvider(type = SellerStuffRunDynalSqlProvider.class,method = "insert")
+    @InsertProvider(type = SellerStuffRunDynalSqlProvider.class,method = "insert")
     void save(SellerStuffRun sellerStuffRun);
 
 
 
     //动态更新
-    @SelectProvider(type = SellerStuffRunDynalSqlProvider.class, method = "updata")
+    @UpdateProvider(type = SellerStuffRunDynalSqlProvider.class, method = "updata")
     void update(SellerStuffRun sellerStuffRun);
 
 

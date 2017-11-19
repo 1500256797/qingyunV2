@@ -35,12 +35,12 @@ public interface StuffDao {
     Stuffs findStuffById(Integer id);
 
     //动态插入
-    @SelectProvider(type = StuffDynalSqlProvider.class,method = "insertStuff")
+    @InsertProvider(type = StuffDynalSqlProvider.class,method = "insertStuff")
     void save(Stuffs stuffs);
 
 
     //动态更新
-    @SelectProvider(type = StuffDynalSqlProvider.class, method = "updateStuff")
+    @UpdateProvider(type = StuffDynalSqlProvider.class, method = "updateStuff")
     void update(Stuffs stuffs);
 
 

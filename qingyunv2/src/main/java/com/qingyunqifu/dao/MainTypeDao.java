@@ -29,12 +29,12 @@ public interface MainTypeDao {
     MainTypes findMainTypeById(Integer id);
 
     //动态插入
-    @SelectProvider(type = MainTypeDynalSqlProvider.class,method = "insertMainType")
+    @InsertProvider(type = MainTypeDynalSqlProvider.class,method = "insertMainType")
     void save(MainTypes mainTypes);
 
 
     //动态更新
-    @SelectProvider(type = MainTypeDynalSqlProvider.class, method = "updateMainType")
+    @UpdateProvider(type = MainTypeDynalSqlProvider.class, method = "updateMainType")
     void update(MainTypes mainTypes);
 
 

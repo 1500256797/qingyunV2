@@ -4,6 +4,7 @@ import com.qingyunqifu.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by qqqqqqq on 17-9-9.
@@ -66,7 +67,7 @@ public interface QingYunService {
 
 
     //找到经营同一产品的所有商家
-    List<Sellers> findAllSellersByStuffId(Integer id);
+    List<Sellers> findAllSellersByStuffId(Stuffs stuff);
 
     //找到一家商家的全部商品
     List<Stuffs> findAllStuffsBySellerId(Integer id);
@@ -82,6 +83,8 @@ public interface QingYunService {
 
     void deleteSellerById(Integer id);
 
+    //根据参数查询商
+    List<Sellers> findSellersWithParam(Map<String,Object> param);
 
     //查询所有商品卖家对应表
     List<SellerStuffRun> findAllSellerStuffRun();

@@ -48,12 +48,12 @@ public interface LittleTypeDao {
     LittleTypes findLittleTypeByMainTypeId(Integer id);
 
     //动态插入
-    @SelectProvider(type = LittleTypeDynalSqlProvider.class,method = "insertLittleType")
+    @InsertProvider(type = LittleTypeDynalSqlProvider.class,method = "insertLittleType")
     void save(LittleTypes littleTypes);
 
 
     //动态更新
-    @SelectProvider(type = LittleTypeDynalSqlProvider.class, method = "updateLittleType")
+    @UpdateProvider(type = LittleTypeDynalSqlProvider.class, method = "updateLittleType")
     void update(LittleTypes littleTypes);
 
 
