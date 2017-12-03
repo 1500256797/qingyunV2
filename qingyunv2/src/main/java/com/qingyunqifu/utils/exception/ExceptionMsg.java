@@ -1,4 +1,4 @@
-package com.qingyunqifu.base.utils.exception;
+package com.qingyunqifu.utils.exception;
 
 /**
  * 异常信息类

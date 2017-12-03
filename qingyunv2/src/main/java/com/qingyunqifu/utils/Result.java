@@ -1,4 +1,4 @@
-package com.qingyunqifu.base.utils;
+package com.qingyunqifu.utils;
 
 import java.util.HashMap;
 import java.util.Map;

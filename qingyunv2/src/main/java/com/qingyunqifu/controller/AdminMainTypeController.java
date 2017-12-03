@@ -1,10 +1,8 @@
 package com.qingyunqifu.controller;
 
-import com.qingyunqifu.base.utils.Result;
-import com.qingyunqifu.base.utils.exception.ExceptionMsg;
-import com.qingyunqifu.domain.LittleTypes;
+import com.qingyunqifu.utils.Result;
+import com.qingyunqifu.utils.exception.ExceptionMsg;
 import com.qingyunqifu.domain.MainTypes;
-import com.qingyunqifu.domain.Stuffs;
 import com.qingyunqifu.service.QingYunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

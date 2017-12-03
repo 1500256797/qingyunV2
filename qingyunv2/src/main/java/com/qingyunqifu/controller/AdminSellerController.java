@@ -1,20 +1,15 @@
 package com.qingyunqifu.controller;
 
-import com.qingyunqifu.base.utils.Result;
-import com.qingyunqifu.base.utils.exception.ExceptionMsg;
+import com.qingyunqifu.utils.Result;
+import com.qingyunqifu.utils.exception.ExceptionMsg;
 import com.qingyunqifu.domain.Sellers;
-import com.qingyunqifu.domain.Stuffs;
 import com.qingyunqifu.service.QingYunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 

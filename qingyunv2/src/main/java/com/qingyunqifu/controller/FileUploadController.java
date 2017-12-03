@@ -1,11 +1,9 @@
 package com.qingyunqifu.controller;
 
-import com.qingyunqifu.base.utils.Result;
+import com.qingyunqifu.utils.Result;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
